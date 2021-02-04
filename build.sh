@@ -1,1 +1,1 @@
-docker build . --tag "edge"
+docker build . --tag "selenium-node-edge"
