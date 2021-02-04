@@ -1,2 +1,2 @@
-docker run -it --entrypoint /bin/bash edge
+docker run -d -e HUB_HOST=localhost -v /dev/shm:/dev/shm edge
 
