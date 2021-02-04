@@ -1,0 +1,29 @@
+FROM selenium/node-base:3.141.59-selenium
+LABEL authors="SeleniumHQ, novakivanovski"
+
+USER root
+
+#============================================
+# Microsoft Edge latest stable
+# Instructions from https://www.microsoftedgeinsider.com/en-us/download/
+#============================================
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+RUN install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+RUN rm microsoft.gpg
+RUN apt update
+RUN apt install microsoft-edge-dev -y
+USER seluser
+
+#============================================
+# EdgeDriver latest
+#============================================
+
+RUN export EDGE_VERSION=$(microsoft-edge-dev --version | tr -d [A-z] | xargs) \ 
+    && wget -O /usr/bin/msedgedriver https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/$(EDGE_VERSION)/edgedriver_linux64.zip \
+    && chmod +x /usr/bin/msedgedriver
+
+COPY generate_config /opt/bin/generate_config
+
+# Generating a default config during build time
+RUN /opt/bin/generate_config > /opt/selenium/config.json
