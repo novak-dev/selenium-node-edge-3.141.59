@@ -13,6 +13,13 @@ RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stab
 RUN rm microsoft.gpg
 RUN apt update
 RUN apt install microsoft-edge-dev=89.0.774.4-1 -y
+RUN chmod +x /usr/bin/microsoft-edge
+
+#=================================
+# Microsoft Edge Script Wrapper
+#=================================
+COPY wrap_edge_binary /opt/bin/wrap_edge_binary
+RUN /opt/bin/wrap_edge_binary
 
 #============================================
 # EdgeDriver 89.0.774.4
