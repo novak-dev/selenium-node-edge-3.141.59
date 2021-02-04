@@ -1,4 +1,4 @@
-Build Docker Image for Microsoft Edge Selenium Grid 3 Node. Tested with version 3.141.59.
+Build Docker Image for Selenium 3.141.59 Microsoft Edge Node.
 
 To run the node, the instructions are the same as what is shown in the Selenium Grid 3 documentation. For example:
 ```
