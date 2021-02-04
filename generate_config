@@ -11,7 +11,7 @@ cat <<_EOF
       "maxInstances": $NODE_MAX_INSTANCES,
       "seleniumProtocol": "WebDriver",
       "applicationName": "$NODE_APPLICATION_NAME",
-      "webdriver.edge.driver": "/usr/bin/msedgedriver", # This doesn't do anything...
+      "webdriver.edge.driver": "/usr/bin/msedgedriver",
       "webdriver.edge.logfile": "/var/log/supervisor/edge.log",
     }
   ],
