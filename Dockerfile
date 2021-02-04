@@ -24,5 +24,8 @@ RUN wget -O driver.zip https://msedgewebdriverstorage.blob.core.windows.net/edge
  && rm driver.zip \
  && mv Driver_Notes /home/seluser/
 
+
+COPY generate_config /opt/bin/generate_config
+RUN /opt/bin/generate_config > /opt/selenium/config.json
 User seluser
 
