@@ -22,8 +22,7 @@ RUN wget -O driver.zip https://msedgewebdriverstorage.blob.core.windows.net/edge
  && mv msedgedriver /usr/bin/msedgedriver \
  && chmod +x /usr/bin/msedgedriver \ 
  && rm driver.zip \
- && mv Driver_Notes /home/seluser/ \ 
- && mv LICENSE /home/seluser 
+ && mv Driver_Notes /home/seluser/
 
 User seluser
 
