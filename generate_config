@@ -29,5 +29,3 @@ cat <<_EOF
   "debug": $GRID_DEBUG
 }
 _EOF
-
-driver.version:
