@@ -32,6 +32,12 @@ RUN wget -O driver.zip https://msedgewebdriverstorage.blob.core.windows.net/edge
  && mv Driver_Notes /home/seluser/
 
 
+# After extensive debugging, it seems that edgedriver is not being picked up from the config or the system PATH.
+# From the source code, we see MicrosoftWebDriver is also used, so creating a link will work.
+# See: https://github.com/SeleniumHQ/selenium/blob/selenium-3.141.59/java/client/src/org/openqa/selenium/edge/EdgeDriverService.java
+# Alternatively, could have set JAVA_OPTS -Dwebdriver.edge.driver
+RUN ln -s /usr/bin/msedgedriver /usr/bin/MicrosoftWebDriver
+
 COPY generate_config /opt/bin/generate_config
 RUN /opt/bin/generate_config > /opt/selenium/config.json
 User seluser

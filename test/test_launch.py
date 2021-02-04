@@ -8,5 +8,7 @@ if __name__ == '__main__':
     print("Launching WebDriver for hub: " + hub_address)
     driver = webdriver.Remote(command_executor=hub_address, desired_capabilities=caps)
     driver.get('https://python.org')
+    print("Title: " + driver.title)
+    assert 'Python' in driver.title
     driver.quit()
     print("Test passed.")
