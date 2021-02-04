@@ -1,7 +1,6 @@
 #!/bin/bash
 
 EDGE_VERSION=89.0.774.4
-# We might need to set these to Launch EdgeDriver: https://github.com/SeleniumHQ/selenium/blob/selenium-3.141.59/java/client/src/org/openqa/selenium/edge/EdgeDriverService.java
 
 cat <<_EOF
 {
@@ -12,9 +11,8 @@ cat <<_EOF
       "maxInstances": $NODE_MAX_INSTANCES,
       "seleniumProtocol": "WebDriver",
       "applicationName": "$NODE_APPLICATION_NAME",
-      "webdriver.edge.driver": "/usr/bin/msedgedriver",
+      "webdriver.edge.driver": "/usr/bin/msedgedriver", # This doesn't do anything...
       "webdriver.edge.logfile": "/var/log/supervisor/edge.log",
-      "webdriver.edge.verboseLogging": true
     }
   ],
   "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
