@@ -1,4 +1,4 @@
-Build Docker Image for Selenium 3.141.59 Microsoft Edge Node.
+Build Docker Image for Selenium 3.141.59 Microsoft Edge Node. Official selenium docker repo only supports Grid 4.
 
 To run the node, the instructions are the same as what is shown in the Selenium Grid 3 documentation. For example:
 ```
