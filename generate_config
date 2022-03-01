@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EDGE_VERSION=89.0.774.4
+EDGE_VERSION=95.0.1020.40
 
 cat <<_EOF
 {
