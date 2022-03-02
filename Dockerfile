@@ -4,7 +4,7 @@ LABEL authors="SeleniumHQ, novakivanovski"
 USER root
 
 #============================================
-# Microsoft Edge 95.0.1020.40-1
+# Microsoft Edge latest stable - using regex to parse the latest version
 # Instructions from https://www.microsoftedgeinsider.com/en-us/download/
 #============================================
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -12,7 +12,10 @@ RUN install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 RUN rm microsoft.gpg
 RUN apt update
-RUN apt install microsoft-edge-stable=95.0.1020.40-1 -y
+
+RUN echo `apt-cache policy microsoft-edge-stable | grep -Po1 'Candidate: \K\d+\.\d+\.\d+\.\d+-\d+'` > ./edge-version
+RUN echo `apt-cache policy microsoft-edge-stable | grep -Po1 'Candidate: \K\d+\.\d+\.\d+\.\d+'` > ./driver-version
+RUN apt install microsoft-edge-stable=`echo $(cat ./edge-version)` -y
 RUN chmod +x /usr/bin/microsoft-edge
 
 #=================================
@@ -22,9 +25,9 @@ COPY wrap_edge_binary /opt/bin/wrap_edge_binary
 RUN /opt/bin/wrap_edge_binary
 
 #============================================
-# EdgeDriver 95.0.1020.40
+# EdgeDriver - latest stable
 #============================================
-RUN wget -O driver.zip https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/95.0.1020.40/edgedriver_linux64.zip \ 
+RUN wget -O driver.zip https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver/`echo $(cat ./driver-version)`/edgedriver_linux64.zip \ 
  && unzip driver.zip \
  && mv msedgedriver /usr/bin/msedgedriver \
  && chmod +x /usr/bin/msedgedriver \ 
