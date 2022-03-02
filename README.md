@@ -10,6 +10,5 @@ run.sh
 
 ```
 Instead of building locally, you can access image from Docker repo (may be out of date): https://hub.docker.com/repository/docker/novak2/selenium-node-edge
-Use this command instead of run.sh
 
 ```docker run -d --net grid -e HUB_HOST=selenium-hub  -v /dev/shm:/dev/shm novak2/selenium-node-edge```
