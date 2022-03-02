@@ -1,6 +1,7 @@
 #!/bin/bash
 
-EDGE_VERSION=95.0.1020.40
+# Its not actually used so lets just supply some value
+EDGE_VERSION=99.9.9999.99
 
 cat <<_EOF
 {
