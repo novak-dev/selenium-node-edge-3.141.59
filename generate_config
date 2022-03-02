@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Its not actually used so lets just supply some value
-EDGE_VERSION=99.9.9999.99
+EDGE_VERSION=$(/usr/bin/microsoft-edge --version | awk '{ print $3 }')
 
 cat <<_EOF
 {
@@ -25,6 +24,7 @@ cat <<_EOF
   "nodePolling": $NODE_POLLING,
   "unregisterIfStillDownAfter": $NODE_UNREGISTER_IF_STILL_DOWN_AFTER,
   "downPollingLimit": $NODE_DOWN_POLLING_LIMIT,
-  "debug": $GRID_DEBUG
+  "debug": $GRID_DEBUG,
+  "custom": $NODE_CUSTOM
 }
 _EOF
