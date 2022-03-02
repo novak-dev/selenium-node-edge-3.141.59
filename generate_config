@@ -12,7 +12,7 @@ cat <<_EOF
       "seleniumProtocol": "WebDriver",
       "applicationName": "$NODE_APPLICATION_NAME",
       "webdriver.edge.driver": "/usr/bin/msedgedriver",
-      "webdriver.edge.logfile": "/var/log/supervisor/edge.log",
+      "webdriver.edge.logfile": "/var/log/supervisor/edge.log"
     }
   ],
   "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
