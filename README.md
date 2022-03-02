@@ -4,7 +4,7 @@ To run the node, the instructions are the same as what is shown in the Selenium 
 ```
 docker network create grid 
 docker run -d -p 4444:4444 --net grid --name selenium-hub selenium/hub:3.141.59-20210128 
-
+docker run -d -e HUB_HOST -v /dev/shm:/dev/shm --net grid  --name selenium-node-edge selenium-node-edge
 build_local.sh
 run.sh
 ```
